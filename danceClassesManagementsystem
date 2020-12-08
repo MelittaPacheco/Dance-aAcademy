@@ -1,0 +1,337 @@
+#include<iostream>
+#include<string>
+#include<cstdlib>
+using namespace std;
+class basicdetails
+	{
+		protected :
+		 string name;
+		 string gender;
+		 int age;
+		 int choice;
+		 string place;
+		 string pno;
+		 int typeofcourse;
+int category;
+int batch;
+int i;
+		public :
+			void displaydetails() //displays the dances offered
+			{
+				cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
+				cout<<"----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"\t\t\t\tWELCOME\n\t\t\tYour Dreams Our Goals"<<endl;
+			
+	cout<<"* To engage students in the collaborative process. "<<endl;
+	cout<<"* To strengthen students' creative skills in live performance through the study of craft and technique."<<endl;
+	cout<<"* To engage critical studies and histories of dance, theater, and performance with rigor and curiosity. "<<endl;
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"Dances offered:"<<endl;
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"1)Hiphop"<<endl;
+				cout<<"Types of Courses             Duration                 Fees"<<endl;
+				cout<<"Introductory course          6 months                 8,000"<<endl;	
+				cout<<"Intermediate                 9 months                 10,000"<<endl;	
+				cout<<"Advanced                     12 months                15,000"<<endl;
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"2) Jazz"<<endl;	
+				cout<<"Types of Courses             Duration                 Fees"<<endl;
+				cout<<"Introductory course          6 months                 9,000"<<endl;	
+				cout<<"Intermediate                 9 months                 12,000"<<endl;	
+				cout<<"Advanced                     12 months                16,000"<<endl;	
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"Batches Available"<<endl;
+				cout<<"3.00pm-4.00pm"<<endl;	
+				cout<<"4.00pm-5.00pm"<<endl;	
+				cout<<"5.00pm-6.00pm"<<endl;
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+				cout<<"-----------------------------------------------------------------------------------------------------------"<<endl;	
+			}
+			basicdetails()//initialisation
+			{
+				name="*****************";
+				gender="*****************";
+				age=0;
+				place="*****************";
+				pno="000000000000";
+			}
+			deldetails()//delete function
+			{
+				name="*****************";
+				gender="*****************";
+				age=0;
+				place="*****************";
+				pno="000000000000";
+			}
+			void getdata() //gets in data of the student
+			{
+						
+						   	cout<<"Kindly enter the following details"<<endl;
+						   	cout<<"Name:"<<endl;
+						   	cin>>name;
+						   	cout<<"Gender:"<<endl;
+						   	cin>>gender;
+						   	cout<<"Age:"<<endl;
+						   	cin>>age;
+						   	cout<<"Place:"<<endl;
+						   	cin>>place;
+						   	cout<<"Contact No:"<<endl;
+						   	cin>>pno;
+						   	
+						   	
+						   	
+	
+cout<<"Course type: \n1.Introductory \n2.Intermediate\n3.Advanced"<<endl;
+cin>>typeofcourse;
+cout<<"Category: \n1.Hiphop \n2.Jazz\n3.Both"<<endl;
+cin>>category;
+cout<<"Batch:\n1.3.00pm-4.00pm \n2.4.00pm-5.00pm \n3.5.00pm-6.00pm"<<endl;
+cin>>batch;
+cout<<"Number of enteries"<<endl;
+cin>>i;  
+						   	
+			}
+			
+	};
+	
+	class hiphop :virtual public basicdetails
+	{ 
+	   public :
+	   	int hiphopfees=0;
+	   	calcfees(int typeofcourse,int i) //calculates the hiphop fees
+	   	{
+	   	  switch(typeofcourse)
+	   	  {
+	   	  	case 1:
+	   	  		hiphopfees=(i*8000);
+	   	  		cout<<"The fees for Hiphop classes is "<<hiphopfees<<endl;
+	   	  		break;
+	   	  	case 2 :
+	   	  		hiphopfees=(i*10000);
+	   	  		cout<<"The fees for Hiphop classes is "<<hiphopfees<<endl;	
+	   	  		break;
+	   	    case 3:
+	   	  		hiphopfees=(i*15000);
+	   	  		cout<<"The fees for Hiphop classes is "<<hiphopfees<<endl;
+					 break;		
+			 }
+		   }
+	   	
+	
+		};
+		class jazz:virtual public basicdetails
+{
+  public :
+  int jazzfees=0;
+void calfees(int typeofcourse,int i)//calculates the jazz fees 
+  {
+   switch(typeofcourse)
+   {
+    case 1:
+    jazzfees=(i*9000);
+    cout<<"The fees for Jazz classes is "<<jazzfees<<endl;
+    break;
+    case 2 :
+    jazzfees=(i*12000);
+    cout<<"The fees for Jazz classes is "<<jazzfees<<endl;
+    break;
+     case 3:
+    jazzfees=(i*16000);
+    cout<<"The fees for Jazz classes is "<<jazzfees<<endl;
+break;
+}
+  }
+ 
+};
+class admission: public hiphop,public jazz
+{
+int total;
+
+public:
+	admission()//initialisation
+	{
+		category=0;
+		typeofcourse =0;
+		i=0;
+		batch=0;
+		total=0;
+	}
+deldet() //delete function 
+	{
+		category=0;
+		typeofcourse =0;
+		i=0;
+		batch=0;
+		total=0;
+	}
+	void deletedet() //deletes the data
+	{
+		deldetails();
+        deldet();   
+	}
+int  payment()//calcuates the total fees
+{
+if (category==1)
+{
+calcfees(typeofcourse,i);
+}
+else if (category==2)
+{
+calfees(typeofcourse,i);
+}
+else
+{
+calcfees(typeofcourse,i);
+calfees(typeofcourse,i);
+}
+total=hiphopfees+jazzfees;
+
+return total;
+}
+
+void changedetails()///edits the data
+{
+int option;
+cout<<"\n1.Change name\n2.Change gender \n3.Change age\n4.Change place\n5.Change contact number\n6.Change type of course\n";
+cout<<"7.Change category\n8.Change batch\n9.Change number of enteries\n10.Exit\n";
+cin>>option;
+switch(option)
+{
+case 1:
+cout<<"Name:"<<endl;
+cin>>name;
+
+break;
+case 2:
+cout<<"Gender:"<<endl;
+  cin>>gender;
+ 
+break;
+case 3:
+cout<<"Age:"<<endl;
+  cin>>age;
+ 
+break;
+case 4:
+cout<<"Place:"<<endl;
+  cin>>place;
+ 
+break;
+case 5:
+cout<<"Contact No:"<<endl;
+  cin>>pno;
+break;
+case 6:
+cout<<"Course type: \n1.Introductory \n2.Intermediate\n3.Advanced"<<endl;
+  cin>>typeofcourse;
+break;
+case 7:
+cout<<"Category: \n1.Hiphop \n2.Jazz\n3.Both"<<endl;
+  cin>>category;
+break;
+case 8:
+cout<<"Batch:\n1.3.00pm-4.00pm \n2.4.00pm-5.00pm \n3.5.00pm-6.00pm"<<endl;
+cin>>batch;
+ 
+break;
+case 9:
+cout<<"Number of enteries"<<endl;
+ cin>>i; 
+break;
+case 10:
+exit(0);
+break;
+}
+jazzfees=0;
+hiphopfees=0;
+}
+	void display ()//displays
+	{
+cout<<"NAME:"<<name<<endl;
+cout<<"GENDER:"<<gender<<endl;  
+cout<<"AGE:"<<age<<endl;
+cout<<"PLACE:"<<place<<endl;
+cout<<"CONTACT NO:"<<pno<<endl;
+cout<<"COURSE TYPE:";
+if (typeofcourse==1)
+{
+cout<<"Introductory"<<endl;
+}
+else if (typeofcourse==2)
+{
+ cout<<"Intermediate"<<endl;
+}
+else if (typeofcourse==3)
+{
+cout<<"Advanced"<<endl;
+}
+cout<<"CATEGORY:";
+if (category==1)
+{
+cout<<"Hiphop"<<endl;
+}
+else if(category==2)
+{
+ cout<<"Jazz"<<endl;
+}
+cout<<"BATCH:";
+if (batch==1)
+{
+cout<<"3.00pm-4.00pm"<<endl;
+}
+else if (batch==2)
+{
+ cout<<"4.00pm-5.00pm"<<endl;
+}
+else if (batch==3)
+{
+cout<<"5.00pm-6.00pm"<<endl;
+}
+
+jazzfees=0;
+hiphopfees=0;
+cout<<"Total Payment to be made is"<<payment()<<endl;
+	} 
+};
+	int main()
+	{
+		
+	admission a1;
+	int ch,category,typeofcourse,i;
+	while(1)
+	{	
+	cout<<"**************************************************************************************************************\n";
+	cout<<"\t\t\t\tWELCOME TO ART IN MOTION \n"<<endl;
+	cout<<"**************************************************************************************************************\n";
+	cout<<"1.Show course details   \n2.To join     \n3.To make changes \n4.To display      \n5.To delete \n6.To exit   "<<endl;
+	cout<<"\t\t\t\tLEAVE IT ON THE FLOOR\n";
+	cout<<"**************************************************************************************************************\n";
+	cin>>ch;
+	switch(ch)
+	{
+		case 1:
+			a1.displaydetails();
+			break;
+		case 2:
+			a1.getdata();
+		    a1.payment();  
+			break;
+		case 3:
+          		a1.changedetails();
+				break;
+		case 4:
+			a1.display();
+			break;
+		case 5:
+			a1.deletedet();
+			break;
+		case 6:	
+			exit(0);					
+			break;
+			default:
+				cout<<"You entered something else\n";
+			
+			
+	}
+}
+	}
